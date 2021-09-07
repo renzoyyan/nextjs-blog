@@ -1,7 +1,6 @@
 import Head from "next/head";
-import FeaturedPost from "../components/home-page/featured-post";
-import Hero from "../components/home-page/hero";
-import { getFeaturedPosts } from "../helpers/posts-util";
+import AllPost from "../../components/posts/all-posts";
+import { getAllPosts } from "../../helpers/posts-util";
 
 const DUMMY_DATA = [
   {
@@ -38,29 +37,27 @@ const DUMMY_DATA = [
   },
 ];
 
-export default function Homepage({ posts }) {
+export default function AllBlogPage({ posts }) {
   return (
     <>
       <Head>
-        <title>Renz | Next Blog</title>
+        <title>Renz | All Posts</title>
         <meta
           name="description"
-          content="I post about programming and web development"
+          content="A list of all programming-related tutorials and posts!"
         />
       </Head>
-
-      <Hero />
-      <FeaturedPost posts={posts} />
+      <AllPost posts={posts} />
     </>
   );
 }
 
 export function getStaticProps() {
-  const featuredPosts = getFeaturedPosts();
+  const allPosts = getAllPosts();
 
   return {
     props: {
-      posts: featuredPosts,
+      posts: allPosts,
     },
   };
 }
